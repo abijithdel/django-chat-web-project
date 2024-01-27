@@ -1,0 +1,15 @@
+{% extends "intex.html" %}
+
+{% block content %} 
+<h1 class="text-center">ACCOUT</h1>
+<p> USERNAME IS : {{user.username}}</p>
+<p> JOINED DATE AND TIME : {{user.email}}</p>
+
+
+
+
+
+{% if user.is_authenticated %}
+<a href="{% url 'logot' %}"> <button type="button">LOGOUT</button></a>
+{% endif %}
+{% endblock %}

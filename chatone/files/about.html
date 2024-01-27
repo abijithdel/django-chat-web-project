@@ -1,0 +1,10 @@
+{% extends "intex.html" %}
+
+{% block content %} 
+<h1 class="text-center">ABOUT</h1>
+<div class="container bg-black text-color-white ">
+    {% for cont in about %}
+    <p>{{ cont.about_co}}</p>
+    {% endfor %}
+</div>
+{% endblock %}

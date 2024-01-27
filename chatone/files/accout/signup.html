@@ -1,0 +1,41 @@
+{% extends "intex.html" %}
+
+{% block content %} 
+<h1 class="text-center">SIGNUP NEW</h1>
+<div class="d-flex align-items-center justify-content-center">
+    <form action="" method="post">
+        {%csrf_token %}
+        <div>
+            <label for="Fname">FIRST NAME</label>
+            <br>
+            <input type="text" name="fname" id="fname" required placeholder="FIRST NAME">
+        </div>
+        <div>
+            <label for="lname">LAST NAME</label>
+            <br>
+            <input type="text" name="lname" id="lname" required placeholder="LAST NAME">
+        </div>
+        <div>
+            <label for="username">USERNAME</label>
+            <br>
+            <input type="text" name="username" id="username" required placeholder="USERNAME">
+        </div>
+        <div>
+            <label for="email">EMAIL</label>
+            <br>
+            <input type="email" name="email" id="email" required placeholder="EMAIL">
+        </div>
+        <div>
+            <label for="password">PASSWORD</label>
+            <br>
+            <input type="password" name="password" id="password" required placeholder="PASSWORD">
+        </div>
+        <div>
+            <label for="password2">CONFORM PASSWORD</label>
+            <br>
+            <input type="password" name="password2" id="password2" required placeholder="CONFORM PASSWORD">
+        </div>
+        <button type="submit">SIGN UP</button>
+    </form>
+</div>
+{% endblock %}

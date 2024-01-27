@@ -1,0 +1,22 @@
+{% extends "intex.html" %}
+
+{% block content %} 
+<h1 class="text-center">LOGIN NEW</h1>
+
+<div class="d-flex align-items-center justify-content-center mt-4">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">USERNAME</label>
+            <br>
+            <input type="text" name="username" id="username" placeholder="USERNAME">
+        </div>
+        <div>
+            <label for="password">PASSWORD</label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="PASSWORD">
+        </div>
+        <button type="submit">LOGIN</button>
+    </form>
+</div>
+{% endblock %}

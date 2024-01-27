@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet"
+      href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css ">
+    <link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+      <style>
+        label{
+          padding: 8px;
+          font-weight: 500;
+        }
+        input{
+          height: 35px;
+          width: 400px;
+          border: 3px black solid;
+          border-radius: 7px;
+        }
+        button{
+          margin-top: 10px;
+          border-radius: 8px;
+          border: 2px black solid;
+          width: 100px;
+          background-color: rgb(58, 194, 58);
+        }
+        h1{
+          text-decoration: none;
+        }
+        .mee{
+          font-size: 40px;
+          color: aqua;
+        }
+        .text-color-white{
+          color: white;
+          height: 300px;
+          width: 85%;
+        }
+        .text-white{
+          color: white;
+        }
+      </style>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar bg-black navbar-expand-md ">
+      <div class="container">
+        <div class="col-2 text-left pl-md-0">
+          <a href="#"><h3 class="text-white text-decoration-none text-justify"> RED MINE </h3></a>
+        </div>
+        
+        <div
+          class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
+          <ul class="navbar-nav justify-content-center  fw-bold">
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{% url 'home' %}">HOME </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'about' %}">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'account' %}">ACCOUNT</a>
+            </li>
+            
+              
+            <li><a class="text-reset nav-link text-white" href="{% url 'logot' %}">LOGOUT</a></li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'login' %}">LOG IN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white"  href="{% url 'signup' %}">SIGN UP</a>
+           </li>
+            {% endif %}
+            
+			     
+           
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+
+
+
+
+    <div class="container mt-3">
+      {% block content %} {% endblock %}
+    </div>
