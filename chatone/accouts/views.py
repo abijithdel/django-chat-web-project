@@ -45,3 +45,7 @@ def accout(req):
 def logot(req):
     logout(req)
     return render(req,'accout/login.html')
+
+
+def edit_delete(req):
+    return render(req,'accout/adit_and_deli_ac.html')
