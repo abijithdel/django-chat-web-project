@@ -1,4 +1,5 @@
 {% extends "intex.html" %}
+{% block title %}SIGN UP{% endblock %}
 
 {% block content %} 
 <h1 class="text-center">SIGNUP NEW</h1>
@@ -36,6 +37,7 @@
             <input type="password" name="password2" id="password2" required placeholder="CONFORM PASSWORD">
         </div>
         <button type="submit">SIGN UP</button>
+        <a href="{% url 'login' %}" class="pl-3">i have a account</a>
     </form>
 </div>
 {% endblock %}

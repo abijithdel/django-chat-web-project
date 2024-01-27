@@ -1,0 +1,26 @@
+{% extends "intex.html" %}
+{% block title %}EDIT YOUR PROFILE{% endblock %}
+{% block content %} 
+<h1 class="text-center">EDIT YOUR PROFILE</h1>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="mt-4">
+        <form method="post">
+            {% csrf_token %}
+            <label for="first_name">First Name:</label>
+            <br>
+            <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br>
+            <label for="last_name">Last Name:</label>
+            <br>
+            <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br>
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" id="username" name="username" value="{{ user.username }}"><br>
+            <label for="email">Email:</label>
+            <br>
+            <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

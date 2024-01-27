@@ -1,9 +1,11 @@
 {% extends "intex.html" %}
-
+{% block title %}ACCOUNT{% endblock %}
 {% block content %} 
 <h1 class="text-center">ACCOUT</h1>
-<p> USERNAME IS : {{user.username}}</p>
-<p> JOINED DATE AND TIME : {{user.email}}</p>
+<p> EMAIL : {{user.first_name}}</p>
+<p> USERNAME : {{user.username}}</p>
+<p> EMAIL : {{user.email}}</p>
+<p> EMAIL : {{user.date_joined}}</p>
 
 
 
@@ -11,7 +13,8 @@
 
 {% if user.is_authenticated %}
 <br>
-<p>Edit And Delete Account</p>
-<a href="{% url 'adite_and_delete' %}" class="m-1 p-1"><button>Edit</button></a>
+<p>Edit or Delete Account</p>
+<a href="{% url 'edit_profile' %}" class="m-1 p-1"><button>Edit</button></a>
+<a href="{% url 'new_password' %}" class="m-1 p-1">CHANGE PASSWOR</a>
 {% endif %}
 {% endblock %}

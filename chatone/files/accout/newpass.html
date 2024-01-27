@@ -1,0 +1,21 @@
+{% extends "intex.html" %}
+{% block title %}NEW PASSWOR{% endblock %}
+{% block content %} 
+<h1 class="text-center">NEW PASSWOR</h1>
+
+<div class="d-flex align-items-center justify-content-center mt-4">
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="newpass">New Password</label>
+        <br>
+        <input type="password" name="newpass" placeholder="New Password">
+        <br>
+        <label for="cpass">Conform Password</label>
+        <br>
+        <input type="password" name="cpass" placeholder="Conform Password">
+        <br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+{% endblock %}

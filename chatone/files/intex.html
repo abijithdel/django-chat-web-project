@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %} {% endblock %}</title>
 
     <meta charset="utf-8">
     <meta name="viewport"
@@ -47,6 +47,7 @@
         .text-white{
           color: white;
         }
+        
       </style>
 
   </head>
@@ -72,7 +73,7 @@
               <a class="nav-link text-white" href="{% url 'account' %}">ACCOUT </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link text-white" href="{% url 'logot' %}">LOGOUT </a>
+              <a class="nav-link text-white" href="{% url 'logot' %}">logout </a>
             </li>
             {% else %}
             <li class="nav-item active">

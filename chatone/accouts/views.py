@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login  as auth_login 
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+
 
 
 # Create your views here.
@@ -47,5 +49,27 @@ def logot(req):
     return render(req,'accout/login.html')
 
 
-def edit_delete(req):
-    return render(req,'accout/adit_and_deli_ac.html')
+def edit_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.save()
+        return render(request, 'accout/accout.html', {'user': user})
+    return render(request, 'accout/edit_profile.html', {'user': user})
+
+def reset_pass(req):
+    user = req.user
+    if req.method == 'POST':
+        pass1 = req.POST.get('newpass')
+        pass2 = req.POST.get('cpass')
+        if pass1 != pass2:
+            return HttpResponse('Check Your Conform Password')
+        else:
+          user.set_password(pass1)
+          update_session_auth_hash(req, user)
+          user.save()
+          return render(req,'accout/accout.html')
+    return render(req,'accout/newpass.html')
