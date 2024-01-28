@@ -19,8 +19,9 @@
             <br>
             <input type="email" id="email" name="email" value="{{ user.email }}"><br>
             
-            <button type="submit">Save</button>
+            <button type="submit">Save</button> 
         </form>
+        <a href="{% url 'delete_account' %}"><button class="bg-danger">Delete</button></a>
     </div>
 </div>
 {% endblock %}

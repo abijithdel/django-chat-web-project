@@ -1,0 +1,15 @@
+{% extends "intex.html" %}
+{% block title %}Delete User Account{% endblock %}
+
+{% block content %} 
+<h1 class="text-center">Delete Your accout</h1>
+<form action="" method="post">
+    {% csrf_token%}
+    <div class="text-center">
+        <h3 class="text-danger">Are You shuver </h3>
+        <p class="text-center">Delete Accout</p>
+        <button type="submit">Delete accout</button>
+    </div>
+</form>
+
+{% endblock %}

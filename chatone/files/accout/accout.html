@@ -2,13 +2,13 @@
 {% block title %}ACCOUNT{% endblock %}
 {% block content %} 
 <h1 class="text-center">ACCOUT</h1>
-<p> EMAIL : {{user.first_name}}</p>
+<p> Name : {{user.first_name}} {{user.last_name}}</p>
 <p> USERNAME : {{user.username}}</p>
 <p> EMAIL : {{user.email}}</p>
-<p> EMAIL : {{user.date_joined}}</p>
+<p> Join Date : {{user.date_joined}}</p>
 
 
-
+<h2 class="text-center text-success">{{responses}}{{saccess}}</h2>
 
 
 {% if user.is_authenticated %}

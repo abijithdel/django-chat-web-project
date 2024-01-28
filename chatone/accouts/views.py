@@ -16,9 +16,11 @@ def login(req):
         user = authenticate(req,username=uname,password=pas)
         if user is not None:
             auth_login(req,user)
-            return render(req,'home.html')
+            welcom = 'congratulations.successfully logged in'
+            return render(req,'home.html',{'welcom':welcom})
         else:
-            return HttpResponse('CHECK YOUR USERNAME''AND CHECK YOUR PASSWORD')
+            us_pas_not_mach='CHECK YOUR USERNAME''AND CHECK YOUR PASSWORD'
+            return render(req,'accout/login.html',{'us_pas_not_mach':us_pas_not_mach})
 
     return render(req,'accout/login.html')
 
@@ -32,11 +34,20 @@ def sigup(req):
         pass2 = req.POST.get('password2')
         
         if pass1 != pass2:
-            return HttpResponse('CHECK YOUR PASSWORD AND CONFORM PASSWORD')
+            pass_not_mach='CHECK YOUR PASSWORD AND CONFORM PASSWORD'
+            return render(req,'accout/signup.html',{'pass_not_mach':pass_not_mach})
+        
+
+        elif User.objects.filter(username=uname).exists():
+            username_taken = 'Username already taken'
+            return render(req, 'accout/signup.html', {'username_taken': username_taken})
         else:
+            
+                
             users = User.objects.create_user(username=uname, email=email, password=pass1, first_name=fname, last_name=lname)
             users.save()
-            return render(req,'home.html')
+            wel_mess='hello',fname
+            return render(req,'home.html',{'wel_mess':wel_mess})
             
     return render(req,'accout/signup.html')
 
@@ -57,7 +68,8 @@ def edit_profile(request):
         user.username = request.POST.get('username')
         user.email = request.POST.get('email')
         user.save()
-        return render(request, 'accout/accout.html', {'user': user})
+        saccessf = 'Profile saccessfully Edited'
+        return render(request, 'accout/accout.html', {'user': user , "saccess":saccessf})
     return render(request, 'accout/edit_profile.html', {'user': user})
 
 def reset_pass(req):
@@ -66,10 +78,21 @@ def reset_pass(req):
         pass1 = req.POST.get('newpass')
         pass2 = req.POST.get('cpass')
         if pass1 != pass2:
-            return HttpResponse('Check Your Conform Password')
+            response ="Check Conform Password"
+            return render(req,'accout/newpass.html',{'response':response})
+
         else:
           user.set_password(pass1)
           update_session_auth_hash(req, user)
           user.save()
-          return render(req,'accout/accout.html')
+          responses = "Password Changed"
+          return render(req,'accout/accout.html',{'responses':responses})
     return render(req,'accout/newpass.html')
+
+def delete_accout_user(req):
+    if req.method == 'POST':
+        user = req.user
+        user.delete()
+        alert = 'Your Accout Deleted'
+        return render(req,'accout/signup.html',{'alert':alert})
+    return render(req,'accout/ac_delete.html')
